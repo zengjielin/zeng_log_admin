@@ -17,14 +17,22 @@ router.beforeEach((to, from, next) => {
                 store.dispatch('login/getUserData').then(res => {
                     store.dispatch('routes/generateRoutes').then(addRoutes => {
                         router.addRoutes(addRoutes)
-                        next({ ...to, replace: true })
+                        next({
+                            ...to,
+                            replace: true
+                        })
                     })
                 }).catch(err => {
-                    console.log(err)
+                    console.log(123, err)
                     // 可根据错误信息，做相应需求，这里默认token值失效
                     window.alert('登录已失效，请重新登录')
                     store.dispatch('login/logout').then(() => {
-                        next({ path: '/login', query: { redirect: to.fullPath } })
+                        next({
+                            path: '/login',
+                            query: {
+                                redirect: to.fullPath
+                            }
+                        })
                     })
                 })
             }
@@ -33,7 +41,12 @@ router.beforeEach((to, from, next) => {
         if (to.path === '/login') {
             next()
         } else {
-            next({ path: '/login', query: { redirect: to.fullPath } })
+            next({
+                path: '/login',
+                query: {
+                    redirect: to.fullPath
+                }
+            })
         }
     }
 })

@@ -16,14 +16,14 @@ import '@/filters' // 全局过滤
 import '@/utils/permission' // 权限验证
 import '@/utils/errorLog' // 错误捕捉
 import '@/utils/cache' // 缓存
-
-// mock数据
-import '@/mock'
+import '@/utils/axios_config' // 缓存
 
 Vue.config.productionTip = false
 
 // 第三方
-Vue.use(ElementUI, { size: 'small' })
+Vue.use(ElementUI, {
+    size: 'small'
+})
 Vue.use(VueProgressBar)
 
 new Vue({

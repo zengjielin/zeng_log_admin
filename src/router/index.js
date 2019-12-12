@@ -7,21 +7,20 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Routes Config
-* @meta
-* icon: ''                      菜单图标（支持svg-icon、el-icon）
-* title: ''                     菜单标题
-* login: false                  是否需要登录
-* roles: 'admin' || ['admin']    是否需要权限
-* keep: false                   是否需要缓存（需要name才能生效）
-* hidden: false                 是否显示在菜单
-* open: false                   是否展开菜单（有子菜单前提下）
-* redirectIndex: 0              重定向到第index位子菜单（有子菜单前提下）
-* affix: false                  是否常驻在tagView组件上（外链无效）
-*/
+ * @meta
+ * icon: ''                      菜单图标（支持svg-icon、el-icon）
+ * title: ''                     菜单标题
+ * login: false                  是否需要登录
+ * roles: 'admin' || ['admin']    是否需要权限
+ * keep: false                   是否需要缓存（需要name才能生效）
+ * hidden: false                 是否显示在菜单
+ * open: false                   是否展开菜单（有子菜单前提下）
+ * redirectIndex: 0              重定向到第index位子菜单（有子菜单前提下）
+ * affix: false                  是否常驻在tagView组件上（外链无效）
+ */
 
 // 异步路由
-export const asyncRoutes = [
-    {
+export const asyncRoutes = [{
         name: 'dashboard',
         path: 'dashboard',
         component: () => import('@/pages/index/children/dashboard'),
@@ -43,8 +42,7 @@ export const asyncRoutes = [
 ]
 
 // 本地路由
-export const localRoutes = [
-    {
+export const localRoutes = [{
         path: '',
         redirect: '/login'
     },
@@ -65,7 +63,9 @@ export const localRoutes = [
 const createRouter = () => new Router({
     // mode: 'history',
     routes: localRoutes,
-    scrollBehavior: () => ({ y: 0 })
+    scrollBehavior: () => ({
+        y: 0
+    })
 })
 
 const router = createRouter()

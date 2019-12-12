@@ -1,26 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import cache from '@/utils/cache'
+import actions from './actions'
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
 const state = {
     logs: [],
     sidebarStatus: cache.getCookie('sidebarStatus') !== 'false'
-}
-const getters = {
-}
-const mutations = {
-    SET_LOGS(state, error) {
-        state.logs.unshift(error)
-    },
-    SET_SIDEBAR_STATUS(state) {
-        let status = !state.sidebarStatus
-        state.sidebarStatus = status
-        cache.setCookie('sidebarStatus', status)
-    }
-}
-const actions = {
 }
 
 // 自动引入和注册modules下的文件
@@ -34,7 +22,6 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 export default new Vuex.Store({
     state,
-    getters,
     mutations,
     actions,
     modules

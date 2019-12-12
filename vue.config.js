@@ -1,4 +1,5 @@
 const path = require('path')
+
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
@@ -7,7 +8,7 @@ const name = require('./package.json').name
 module.exports = {
     publicPath: '/',
     outputDir: 'dist',
-    lintOnSave: true,
+    lintOnSave: false,
     productionSourceMap: false,
     css: {
         sourceMap: false,
@@ -21,15 +22,12 @@ module.exports = {
     devServer: {
         port: 8003,
         open: true,
-        // proxy: {
-        //     '/api': {
-        //         target: '',
-        //         changeOrigin: true,
-        //         pathRewrite: {
-        //             '^/api': ''
-        //         }
-        //     }
-        // }
+        proxy: {
+            '/api': {
+                target: 'http://127.0.0.1:8000',
+                changeOrigin: true,
+            }
+        }
     },
     configureWebpack: {
         name: name,

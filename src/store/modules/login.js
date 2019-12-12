@@ -1,4 +1,3 @@
-import { getLogin, getUser } from '@/api/login'
 import router, { resetRouter } from '@/router'
 import cache from '@/utils/cache'
 
